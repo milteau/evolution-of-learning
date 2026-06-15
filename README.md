@@ -46,7 +46,7 @@
 
 ## 阅读本书
 
-- [HTML 在线阅读](./学习的进化.html)
+- [HTML 在线阅读](https://milteau.github.io/evolution-of-learning/%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E5%8C%96.html)
 - [PDF 下载](./学习的进化.pdf)
 - EPUB 版本（整理图片后推出）
 
