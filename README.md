@@ -2,7 +2,7 @@
 
 > 从单细胞到人工智能，一本关于「学习如何学习」的开源小册子
 
-[![GitHub stars](https://img.shields.io/github/stars/frank-peng/evolution-of-learning?style=social)](https://github.com/frank-peng/evolution-of-learning/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/milteau/evolution-of-learning?style=social)](https://github.com/milteau/evolution-of-learning/stargazers)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## 📖 内容简介
@@ -37,12 +37,12 @@
 
 ### 在线阅读
 
-- [HTML 在线版](./docs/evolution-of-learning.html)
+- [HTML 在线版](./学习的进化.html)
 
 ### 下载阅读
 
-- [PDF 版本](./docs/evolution-of-learning.pdf)
-- [EPUB 版本](./docs/evolution-of-learning.epub)
+- [PDF 版本](./学习的进化.pdf)
+- EPUB 版本（即将推出，插入图片后重新导出）
 
 ### 源码获取
 
@@ -60,19 +60,19 @@
 
 - Emacs 27+
 - Org Mode 9+
+- MiKTeX（导出 PDF 用）
 
 ### 导出命令
 
 ```elisp
 ;; 导出为 HTML
-(org-html-export-to-html)
+M-x org-html-export-to-html
 
 ;; 导出为 PDF
-(org-latex-export-to-pdf)
+M-x org-latex-export-to-pdf
 
 ;; 导出为 EPUB
-(require 'ox-epub)
-(org-epub-export-to-epub)
+M-x org-epub-export-to-epub
 ```
 
 ### 或使用 Pandoc 转换
