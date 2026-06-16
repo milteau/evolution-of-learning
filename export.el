@@ -21,22 +21,18 @@ body {
   font-size: 17px;
   line-height: 1.85;
   color: #333;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 40px 40px 80px 360px;
   background: #fafafa;
-  /* ===== 双栏布局：左侧目录，右侧内容 ===== */
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  grid-template-areas: \"toc content\";
-  gap: 0 60px;
 }
 
 /* ===== 固定侧边目录 ===== */
 #table-of-contents {
-  grid-area: toc;
-  position: sticky;
+  position: fixed;
+  left: 24px;
   top: 40px;
+  width: 280px;
   height: fit-content;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
@@ -66,7 +62,6 @@ body {
 
 /* ===== 主内容区 ===== */
 #content {
-  grid-area: content;
   max-width: 720px;
 }
 
@@ -279,12 +274,12 @@ figcaption {
 /* ===== 响应式适配 ===== */
 @media (max-width: 900px) {
   body {
-    display: block;
-    padding: 20px 16px 60px;
+    padding: 20px 16px 60px 16px;
   }
 
   #table-of-contents {
     position: static;
+    width: auto;
     max-height: none;
     margin: 0 0 2em;
   }
