@@ -21,10 +21,53 @@ body {
   font-size: 17px;
   line-height: 1.85;
   color: #333;
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 24px 80px;
   background: #fafafa;
+  /* ===== 双栏布局：左侧目录，右侧内容 ===== */
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-areas: \"toc content\";
+  gap: 0 60px;
+}
+
+/* ===== 固定侧边目录 ===== */
+#table-of-contents {
+  grid-area: toc;
+  position: sticky;
+  top: 40px;
+  height: fit-content;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 24px 28px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  font-size: 0.9em;
+}
+
+#table-of-contents h2 {
+  font-size: 1.2em;
+  margin: 0 0 1em;
+  padding: 0;
+  border: none;
+}
+
+#table-of-contents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#table-of-contents li {
+  margin: 0.3em 0;
+}
+
+/* ===== 主内容区 ===== */
+#content {
+  grid-area: content;
+  max-width: 720px;
 }
 
 /* ===== 标题样式 ===== */
@@ -184,37 +227,70 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ===== 目录样式 ===== */
-#table-of-contents {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 24px 28px;
-  border-radius: 12px;
-  margin: 2em 0 3em;
-  border: 1px solid #e0e0e0;
+/* ===== 图片样式：可点击放大 ===== */
+.image-with-lightbox {
+  cursor: zoom-in;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
 }
 
-#table-of-contents h2 {
-  font-size: 1.2em;
-  margin: 0 0 1em;
-  padding: 0;
-  border: none;
+.image-with-lightbox:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-#table-of-contents ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+figure {
+  margin: 2em 0;
+  text-align: center;
 }
 
-#table-of-contents li {
-  margin: 0.3em 0;
+figcaption {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0.5em;
+}
+
+/* ===== Lightbox 弹出层 ===== */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  border-radius: 4px;
 }
 
 /* ===== 响应式适配 ===== */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   body {
+    display: block;
     padding: 20px 16px 60px;
-    font-size: 16px;
+  }
+
+  #table-of-contents {
+    position: static;
+    max-height: none;
+    margin: 0 0 2em;
+  }
+
+  #content {
+    max-width: 100%;
   }
 
   h1 { font-size: 1.8em; }
@@ -227,7 +303,18 @@ a:hover {
     border-radius: 0;
   }
 }
-</style>")
+</style>
+<script>
+function openLightbox(el) {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay active';
+  overlay.innerHTML = '<img src=\"' + el.src + '\" alt=\"' + el.alt + '\">';
+  overlay.onclick = function() {
+    overlay.remove();
+  };
+  document.body.appendChild(overlay);
+}
+</script>")
 
 ;; 导出 HTML
 (defun export-html ()
