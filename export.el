@@ -21,26 +21,26 @@ body {
   font-size: 17px;
   line-height: 1.85;
   color: #333;
-  max-width: 960px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 40px 40px 80px 360px;
+  padding: 40px 40px 80px 280px;
   background: #fafafa;
 }
 
 /* ===== 固定侧边目录 ===== */
 #table-of-contents {
   position: fixed;
-  left: 24px;
+  left: 20px;
   top: 40px;
-  width: 280px;
+  width: 220px;
   height: fit-content;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 24px 28px;
+  padding: 20px 24px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 #table-of-contents h2 {
@@ -62,7 +62,7 @@ body {
 
 /* ===== 主内容区 ===== */
 #content {
-  max-width: 720px;
+  max-width: 580px;
 }
 
 /* ===== 标题样式 ===== */
